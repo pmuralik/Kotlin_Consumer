@@ -7,4 +7,6 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface ClaimRepository : JpaRepository<Claim,String> {
+
+    fun findByConsumed(consumed : Boolean) : List<Claim>
 }

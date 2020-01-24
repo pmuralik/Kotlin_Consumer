@@ -10,10 +10,18 @@ import org.springframework.stereotype.Component
 class MessageLisgner {
 
     @Autowired
-    lateinit var ClaimRepository: ClaimRepository
+    lateinit var claimRepository: ClaimRepository
 
     @Scheduled(fixedDelay=1000)
     fun consumeMessages()  {
-        println(ClaimRepository.findAll())
+       // println(ClaimRepository.findAll())
+       // println(claimRepository.findByConsumed(false))
+
+        for (claim in claimRepository.findByConsumed(false) ) {
+            println("Consumed message: " + claim)
+            claim.consumed = true
+            claimRepository.save(claim)
+        }
     }
+
 }

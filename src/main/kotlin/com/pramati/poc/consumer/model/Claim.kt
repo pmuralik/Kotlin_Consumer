@@ -9,5 +9,6 @@ data class  Claim(
         val createdBy: String,
         @Id
         val claimId: String,
-        val createdDate: Instant
+        val createdDate: Instant,
+        var consumed: Boolean
 )
